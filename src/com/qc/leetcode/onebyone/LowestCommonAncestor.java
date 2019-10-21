@@ -35,6 +35,10 @@ package com.qc.leetcode.onebyone;
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+ *
+ *
+ *  通过递归左右子树找到pq相等的结点并记录root和回溯。
+ *
  * @project LeetCode
  */
 
@@ -59,7 +63,8 @@ public class LowestCommonAncestor {
         head.right.right=rr;
         head.right.left=rf;
         TreeNode treeNode = lowestCommonAncestor(head, frf, frr);
-        System.out.println(treeNode.val);
+//        System.out.println(treeNode.val);
+        head.preOrder(head);
     }
     public static TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if (root == null) {//当遍历到叶结点后就会返回null
@@ -92,5 +97,15 @@ public class LowestCommonAncestor {
          return "TreeNode{" +
                  "val=" + val +
                  '}';
+     }
+     public void preOrder(TreeNode treeNode){
+          if(treeNode==null){
+              return;
+
+          }
+          this.preOrder(treeNode.left);
+
+         this.preOrder(treeNode.right);
+         System.out.println(treeNode.val);
      }
  }
