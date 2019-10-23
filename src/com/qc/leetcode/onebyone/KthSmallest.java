@@ -1,8 +1,5 @@
 package com.qc.leetcode.onebyone;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * @author qc
@@ -20,64 +17,71 @@ import java.util.List;
  */
 
 public class KthSmallest {
-    static List list=new ArrayList();
     public static void main(String[] args){
         KthSmallest kthSmallest = new KthSmallest();
-        TreeNode head = new TreeNode(3);
+        TreeNode head = new TreeNode(9);
         TreeNode f = new TreeNode(5);
-        TreeNode r = new TreeNode(1);
-        TreeNode ff = new TreeNode(6);
-        TreeNode fr = new TreeNode(2);
-        TreeNode frf = new TreeNode(7);
-        TreeNode frr = new TreeNode(4);
-        TreeNode rf = new TreeNode(0);
-        TreeNode rr = new TreeNode(8);
+        TreeNode r = new TreeNode(15);
+        TreeNode ff = new TreeNode(4);
+        TreeNode fr = new TreeNode(7);
+        TreeNode rf = new TreeNode(14);
+        TreeNode rr = new TreeNode(18);
         head.left=f;
         head.left.left=ff;
         head.left.right=fr;
-        head.left.right.left=frf;
-        head.left.right.right=frr;
         head.right=r;
         head.right.right=rr;
         head.right.left=rf;
-        kthSmallest.preOrder(head);
-        System.out.println(kthSmallest.kthSmallest(head, 2));
-
-        int i = kthSmallest.kthSmallest1(head, 4);
-        System.out.println(i);
+        int i1 = kthSmallest.kthSmallest(head, 2);
+        System.out.println(i1);
     }
 
     public  int kthSmallest(TreeNode root, int k) {
-        Collections.sort(list);
-        System.out.println(list);
-        return (int) list.get(k-1);
+        Order(root,k);
+        return val;
     }
-
-    public  void preOrder(TreeNode treeNode){
+    private int i = 0;
+    private int val = 0;
+    private int count=0;
+    public  void Order(TreeNode treeNode,int k){
         if(treeNode==null){
             return;
         }
-        this.preOrder(treeNode.left);
-        this.preOrder(treeNode.right);
-        list.add(treeNode.val);
+
+        this.Order(treeNode.left,k);
+        System.out.println(treeNode.val);
+        if(k==++i){
+            val = treeNode.val;
+        }
+        this.Order(treeNode.right,k);
     }
 
 
-    static int i=0;
-    public int kthSmallest1(TreeNode root, int k) {
-         return   o(root,k);
-    }
-    private static int o(TreeNode root,int k) {
-        i++;
-        if(root.left!=null){
-            o(root.left, k);
+    /**
+     *
+     *
+     * efficient
+     */
+    class Solution {
+        public int kthSmallest(TreeNode root, int k) {
+            count=k;
+            Order(root);
+            return i;
         }
-        if (i == k) {
-            return root.val;
+
+        private int i = 0;
+        private int count=0;
+        public  void Order(TreeNode treeNode){
+            if(treeNode==null||count==0){
+                return;
+            }
+            this.Order(treeNode.left);
+            if(--count==0){
+                i=treeNode.val;
+                return;
+            }
+            this.Order(treeNode.right);
         }
-        if(root.right!=null){
-            o(root.right, k);
-        }
-        return 0;
+
     }
 }
