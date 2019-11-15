@@ -9,7 +9,7 @@ package com.qc.leetcode.sort;
 
 public class QuickSort {
     public static void main(String[] args){
-        int[] arr = {-9, 78, 0, 23, -567, 70};
+        int arr[] = {3, 9, -1, 10, -2};
         quickSort(arr, 0, arr.length -1);
         PrintUtil.print(arr);
     }
