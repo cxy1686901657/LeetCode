@@ -9,7 +9,9 @@ package com.qc.leetcode.sort;
 
 public class SelectSort {
     public static void main(String[] args){
-
+        int arr[] = {3, 9, -1, 10, -2};
+        selectsort(arr);
+        PrintUtil.print(arr);
     }
     public static void selectsort(int[] arr){
         int temp;
