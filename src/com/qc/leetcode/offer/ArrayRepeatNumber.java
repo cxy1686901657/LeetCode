@@ -41,4 +41,15 @@ public class ArrayRepeatNumber {
         nums[i] = nums[j];
         nums[j] = t;
     }
+
+    public static void main(String[] args) {
+        String a=new String("s");
+        String s = new String(a);
+        System.out.println(a==s);
+        System.out.println(a.hashCode());
+        System.out.println(s.hashCode());
+        System.out.println(a.equals(s));
+        System.out.println(a.intern());
+        System.out.println(s);
+    }
 }
