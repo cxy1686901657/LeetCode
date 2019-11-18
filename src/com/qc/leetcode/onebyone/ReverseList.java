@@ -38,6 +38,8 @@ public class ReverseList {
             prev=head;
             head=temp;
         }
+
+
         return prev;
     }
     public ListNode ResreverseList(ListNode head) {
@@ -47,6 +49,8 @@ public class ReverseList {
         head.next = null;
         return p;
     }
+
+
 
 
 }
