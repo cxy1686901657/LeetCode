@@ -27,7 +27,7 @@ public class RadixSort {
             }
         }
         int maxLength = (max + "").length();
-        int[][] bucket = new int[10][arr.length];
+        int[][] bucket = new int[10][maxLength];
         int[] bucketElementCounts = new int[10];
         for (int i = 0, n = 1; i < maxLength; i++, n *= 10) {
             for (int j = 0; j < arr.length; j++) {
